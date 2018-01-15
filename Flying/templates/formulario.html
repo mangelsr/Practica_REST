@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Flying</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet">
+  </head>
+  <body class="container my-5">
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-3">Flying</h1>
+        <p class="lead">Tu asesor de vuelos!</p>
+      </div>
+    </div>
+    <form id="form" method="POST" action="{% url 'buscar' %}">
+      {% csrf_token %}
+      {{ form }}
+      <br>
+      <label class="custom-control custom-radio">
+        <input id="tipo0" name="radio" type="radio" class="custom-control-input" checked>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Vuelo directo</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input id="tipo1" name="radio" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Vuelo con escalas</span>
+      </label><br>
+      <button id="enviar" class="btn btn-outline-primary">
+        Buscar
+      </button>
+    </form>
+
+    <div id="result">
+      
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <script src="{% static "js/form.js" %}"></script>
+    
+  <body>
+</html>
