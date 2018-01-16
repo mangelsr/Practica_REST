@@ -14,7 +14,7 @@ class Airport(models.Model):
     timezone = models.IntegerField(blank=True, null=True)
     dst = models.CharField(max_length=5, blank=True, null=True)
     tz_db = models.CharField(max_length=150, blank=True, null=True)
-    tipe = models.CharField(max_length=25, blank=True, null=True)
+    type = models.CharField(max_length=25, blank=True, null=True)
     source = models.CharField(max_length=75, blank=True, null=True)
 
 

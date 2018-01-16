@@ -3,10 +3,29 @@ import time
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
+from rest_framework import viewsets
+
 from django_ajax.decorators import ajax
 
 from .forms import Form
 from .models import *
+from .serializers import *
+
+
+class AirportsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows airports to be viewed or edited.
+    """
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirlinesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows airlines to be viewed or edited.
+    """
+    queryset = Airline.objects.all()
+    serializer_class = AirlineSerializer
 
 
 def cargar_paises():
