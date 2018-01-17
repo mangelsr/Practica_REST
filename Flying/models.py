@@ -46,3 +46,20 @@ class Country(models.Model):
     iso1 = models.CharField(max_length=5, blank=True, null=True)
     iso2 = models.CharField(max_length=5, blank=True, null=True)
     campo = models.CharField(max_length=5, blank=True, null=True)
+
+
+class City(models.Model):
+    name = models.CharField(max_length=75)
+    
+    def __str__(self):
+        return self.name
+
+
+class Wish(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=14)
+    dateI = models.DateField()
+    dateF = models.DateField()
+    cityI = models.ForeignKey('City', on_delete=models.SET_NULL, related_name='+', blank=True, null=True)
+    cityF = models.ForeignKey('City', on_delete=models.SET_NULL, related_name='+', blank=True, null=True)
+    stops = models.BooleanField()

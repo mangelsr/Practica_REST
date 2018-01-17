@@ -15,7 +15,7 @@
         <p class="lead">Tu asesor de vuelos!</p>
       </div>
     </div>
-    <form id="form" method="POST" action="{% url 'buscar' %}">
+    <form id="form" method="POST" action="{% url 'wish-list' %}">
       {% csrf_token %}
       {{ form }}
       <br>

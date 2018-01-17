@@ -1,5 +1,6 @@
 import time
 
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
@@ -7,7 +8,7 @@ from rest_framework import viewsets
 
 from django_ajax.decorators import ajax
 
-from .forms import Form
+from .forms import *
 from .models import *
 from .serializers import *
 
@@ -26,6 +27,35 @@ class AirlinesViewSet(viewsets.ModelViewSet):
     """
     queryset = Airline.objects.all()
     serializer_class = AirlineSerializer
+
+
+class CountriesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows countries to be viewed or edited.
+    """
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
+
+class RoutesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows routes to be viewed or edited.
+    """
+    queryset = Route.objects.all()
+    serializer_class = RouteSerializer
+
+
+class CitiesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows cities to be viewed or edited.
+    """
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+
+class WishesViewSet(viewsets.ModelViewSet):
+	queryset = Wish.objects.all()
+	serializer_class = WishSerializer
 
 
 def cargar_paises():
@@ -129,6 +159,12 @@ def index(request):
 	return render(request,'formulario.html', {'form': form})
 
 
+@require_http_methods(['GET'])
+def deseo(request):
+	form = WishForm()
+	return render(request,'wish.html', {'form': form})
+
+
 @ajax
 @require_http_methods(['POST'])
 def buscar(request):
@@ -169,8 +205,20 @@ def buscar(request):
 		return render(request, 'no_result.html')
 
 
+def cargar_ciudades():
+	City.objects.all().delete()
+	ciudades = set(Airport.objects.values_list('city', flat=True))
+	for ciudad in ciudades:
+		try:
+			city = City.objects.create(name=ciudad)
+		except:
+			pass
+	
+
 def cargar_base(request):
-	cargar_paises()
-	cargar_aerolineas()
-	cargar_aeropuertos()
-	cargar_rutas()
+	# cargar_paises()
+	# cargar_aerolineas()
+	# cargar_aeropuertos()
+	# cargar_rutas()
+	#cargar_ciudades()
+	return HttpResponse('ok')
