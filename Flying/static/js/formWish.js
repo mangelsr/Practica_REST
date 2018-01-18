@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url: $('#form').attr('action'),
+        url: $('#formREST').attr('action'),
         type: 'GET',
         success: function(data){
             console.log(data);
