@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet">
   </head>
-  <body id="cuerpo" class="container my-5" action="{% url 'wish-list' %}">
+  <body id="cuerpo" class="container my-5">
     <div class="jumbotron jumbotron-fluid text-center">
       <div class="container">
         <h1 class="display-3">Flying</h1>
         <p class="lead">Tu asesor de vuelos!</p>
       </div>
     </div>
-    <form id="form" method="POST" action="{% url 'wish-detail' %}">
+    <form id="form" method="POST" action="{% url 'wish-list' %}">
       {% csrf_token %}
       {{ form }}
       <button id="enviar" class="btn btn-outline-primary">

@@ -35,7 +35,7 @@ class CitySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('__all__')
 
 
-class WishSerializer(serializers.HyperlinkedModelSerializer):
+class WishSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Wish 
         fields = ('__all__')
