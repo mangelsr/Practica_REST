@@ -29,7 +29,7 @@ class CountrySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name', 'iso1', 'iso2', 'campo')
 
 
-class CitySerializer(serializers.HyperlinkedModelSerializer):
+class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.City 
         fields = ('__all__')

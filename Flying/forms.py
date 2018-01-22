@@ -17,7 +17,7 @@ class Form(forms.Form):
 class WishForm(forms.ModelForm):
 	class Meta:
 		model = Wish
-		fields = ['name', 'phone', 'dateI', 'dateF', 'cityI', 'cityF']
+		fields = ['name', 'phone', 'dateI', 'dateF', 'cityI', 'cityF', 'stops']
 		widgets = {
             'dateI': forms.DateInput(attrs={'type': 'date'}),
 			'dateF': forms.DateInput(attrs={'type': 'date'}),

@@ -1,7 +1,7 @@
 import time
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 
 from rest_framework import viewsets
@@ -56,7 +56,9 @@ class CitiesViewSet(viewsets.ModelViewSet):
 class WishesViewSet(viewsets.ModelViewSet):
 	queryset = Wish.objects.all()
 	serializer_class = WishSerializer
-
+	def create(self, request, *args, **kwargs):
+		super(WishesViewSet, self).create(request, *args, **kwargs)
+		return redirect('deseo')
 
 def cargar_paises():
 	Country.objects.all().delete()
